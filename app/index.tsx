@@ -1,8 +1,10 @@
+import Constants from "expo-constants";
 import { useEffect, useState } from "react";
 import { Button, Text, View } from "react-native";
 import { io } from "socket.io-client";
 
-const socket = io("https://incrementor.godzilo.com", { transports: ["websocket"] });
+const SOCKET_URL = Constants.expoConfig?.extra?.socketUrl;
+const socket = io(SOCKET_URL, { transports: ["websocket"] });
 
 export default function Index() {
   const [count, setCount] = useState(0);
